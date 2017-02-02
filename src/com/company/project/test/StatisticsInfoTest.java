@@ -19,7 +19,6 @@ public class StatisticsInfoTest {
         info.update();
         assertEquals("[2]", info.getStatistics().toString());
 
-
         info.reset();
         assertEquals("[1, 2]", info.getStatistics().toString());
 
