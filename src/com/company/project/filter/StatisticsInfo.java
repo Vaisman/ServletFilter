@@ -5,12 +5,12 @@ public class StatisticsInfo {
     private final QueueList<Integer> queue = new QueueList(statisticsHours);
     private Integer callsCount = 0;
 
-    public void reset(){
+    public void reset() {
         callsCount = 1;
         queue.add(callsCount);
     }
 
-    public void update(){
+    public void update() {
         ++callsCount;
         if (queue.size() == 0) {
             queue.add(callsCount);

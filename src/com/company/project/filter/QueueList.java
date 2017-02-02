@@ -12,7 +12,7 @@ public class QueueList<T> extends LinkedList<T> {
     @Override
     public boolean add(T e) {
         super.addFirst(e);
-        if (size() > maxSize){
+        if (size() > maxSize) {
             removeLast();
         }
         return true;

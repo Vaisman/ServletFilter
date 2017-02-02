@@ -5,7 +5,7 @@ public class StatisticsProcessor
     private final StatisticsInfo statisticsInfo = new StatisticsInfo();
     private final StatisticsInterval statisticsInterval = new StatisticsInterval();
 
-    private void updateStatistics(){
+    private void updateStatistics() {
         statisticsInfo.update();
     }
 

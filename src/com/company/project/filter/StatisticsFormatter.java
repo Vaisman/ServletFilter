@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class StatisticsFormatter {
 
-    public void formatStatistics(StatisticsInfo info, ServletResponse response){
+    public void formatStatistics(StatisticsInfo info, ServletResponse response) {
         try {
             QueueList<Integer> queue = info.getStatistics();
 

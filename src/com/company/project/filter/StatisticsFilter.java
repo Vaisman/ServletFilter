@@ -14,12 +14,10 @@ public class StatisticsFilter implements Filter
     private final StatisticsProcessor statisticsProcessor = new StatisticsProcessor();
 
     private void collectStatistics(){
-        try
-        {
+        try {
             statisticsProcessor.CollectStatistics();
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             System.out.println("Exception raised: " + e.getMessage());
         }
     }
@@ -36,16 +34,13 @@ public class StatisticsFilter implements Filter
     }
 
     @Override
-    public void init(FilterConfig config) throws ServletException
-    {
+    public void init(FilterConfig config) throws ServletException {
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException
-    {
-        try
-        {
+            throws IOException, ServletException {
+        try {
             if (needStatistics(request)) {
                 getStatistics(response);
                 return;
@@ -54,14 +49,12 @@ public class StatisticsFilter implements Filter
             chain.doFilter(request, response);
             collectStatistics();
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             System.out.println("Exception raised: " + e.getMessage());
         }
     }
 
     @Override
-    public void destroy()
-    {
+    public void destroy() {
     }
 }

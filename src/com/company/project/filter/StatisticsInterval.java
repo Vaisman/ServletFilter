@@ -7,15 +7,15 @@ public class StatisticsInterval{
     private Duration intervalDuration = Duration.ofMinutes(1);
     private Instant intervalStartTime = Instant.now();
 
-    public void reset(){
+    public void reset() {
         intervalStartTime = Instant.now();
     }
 
-    public void setIntervalDuration(Duration duration){
+    public void setIntervalDuration(Duration duration) {
         intervalDuration = duration;
     }
 
-    public boolean isIntervalFinished(){
+    public boolean isIntervalFinished() {
         Duration difference = intervalDuration.minus(Duration.between(intervalStartTime, Instant.now()));
         return difference.isNegative();
     }
