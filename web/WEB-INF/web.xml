@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <filter>
+        <filter-name>StatsFilter</filter-name>
+        <filter-class>com.company.project.filter.StatisticsFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>StatsFilter</filter-name>
+        <url-pattern>/OgettoServlet</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>OgettoServlet</servlet-name>
+        <servlet-class>com.company.project.servlets.OgettoServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OgettoServlet</servlet-name>
+        <url-pattern>/OgettoServlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
