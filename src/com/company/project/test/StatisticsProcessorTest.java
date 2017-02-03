@@ -1,7 +1,7 @@
 package com.company.project.test;
 
-import com.company.project.filter.StatisticsInfo;
-import com.company.project.filter.StatisticsProcessor;
+import com.company.project.statistics.StatisticsInfo;
+import com.company.project.statistics.StatisticsProcessor;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,26 +15,26 @@ public class StatisticsProcessorTest {
     public void testStatisticsProcessor() {
         StatisticsProcessor processor = new StatisticsProcessor();
 
-        for (int i = 0; i < callsCount; ++i) {
-            processor.CollectStatistics();
+        for (int i = 0; i < callsCount; i++) {
+            processor.collectStatistics();
         }
 
-        StatisticsInfo info = processor.GetStatistics();
+        StatisticsInfo info = processor.getStatistics();
         assertEquals("[100]", info.getStatistics().toString());
     }
 
     private class MockThread extends Thread {
 
-        final StatisticsProcessor statisticsProcessor;
+        private final StatisticsProcessor statisticsProcessor;
 
-        MockThread (StatisticsProcessor processor) {
+        MockThread(final StatisticsProcessor processor) {
             statisticsProcessor = processor;
         }
 
         public void run() {
-            for (int i = 0; i < callsCount; ++i) {
-                statisticsProcessor.CollectStatistics();
-                statisticsProcessor.GetStatistics();
+            for (int i = 0; i < callsCount; i++) {
+                statisticsProcessor.collectStatistics();
+                statisticsProcessor.getStatistics();
             }
         }
     }
@@ -52,10 +52,9 @@ public class StatisticsProcessorTest {
             t1.join();
             t2.join();
 
-            StatisticsInfo info = processor.GetStatistics();
+            StatisticsInfo info = processor.getStatistics();
             assertEquals("[200]", info.getStatistics().toString());
-        }
-        catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             System.out.println("Error: " + e.getMessage());
         }
     }

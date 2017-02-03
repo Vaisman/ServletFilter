@@ -1,6 +1,6 @@
 package com.company.project.test;
 
-import com.company.project.filter.StatisticsInfo;
+import com.company.project.statistics.StatisticsInfo;
 
 import static org.junit.Assert.assertEquals;
 

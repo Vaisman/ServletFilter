@@ -2,7 +2,7 @@ package com.company.project.test;
 
 import java.time.Duration;
 
-import com.company.project.filter.StatisticsInterval;
+import com.company.project.statistics.StatisticsInterval;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,8 +20,7 @@ public class StatisticsIntervalTest {
 
             Thread.sleep(1500);
             assertEquals(true, interval.isIntervalFinished());
-        }
-        catch(InterruptedException e) {
+        } catch (InterruptedException e) {
             System.out.println("Error: " + e.getMessage());
         }
     }

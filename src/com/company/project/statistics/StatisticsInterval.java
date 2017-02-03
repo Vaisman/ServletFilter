@@ -1,9 +1,11 @@
-package com.company.project.filter;
+package com.company.project.statistics;
 
 import java.time.Duration;
 import java.time.Instant;
 
-public class StatisticsInterval{
+// TO DO Timer
+
+public final class StatisticsInterval {
     private Duration intervalDuration = Duration.ofMinutes(1);
     private Instant intervalStartTime = Instant.now();
 
@@ -11,7 +13,7 @@ public class StatisticsInterval{
         intervalStartTime = Instant.now();
     }
 
-    public void setIntervalDuration(Duration duration) {
+    public void setIntervalDuration(final Duration duration) {
         intervalDuration = duration;
     }
 

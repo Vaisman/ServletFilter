@@ -1,7 +1,6 @@
-package com.company.project.filter;
+package com.company.project.statistics;
 
-public class StatisticsProcessor
-{
+public final class StatisticsProcessor {
     private final StatisticsInfo statisticsInfo = new StatisticsInfo();
     private final StatisticsInterval statisticsInterval = new StatisticsInterval();
 
@@ -9,21 +8,20 @@ public class StatisticsProcessor
         statisticsInfo.update();
     }
 
-    private void resetInterval(){
+    private void resetInterval() {
         statisticsInfo.reset();
         statisticsInterval.reset();
     }
 
-    public synchronized void CollectStatistics() {
+    public synchronized void collectStatistics() {
         if (statisticsInterval.isIntervalFinished()) {
             resetInterval();
-        }
-        else {
+        } else {
             updateStatistics();
         }
     }
 
-    public synchronized StatisticsInfo GetStatistics() {
+    public synchronized StatisticsInfo getStatistics() {
         return statisticsInfo;
     }
 }

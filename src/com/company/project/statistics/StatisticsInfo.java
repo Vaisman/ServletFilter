@@ -1,6 +1,6 @@
-package com.company.project.filter;
+package com.company.project.statistics;
 
-public class StatisticsInfo {
+public final class StatisticsInfo {
     private final Integer statisticsHours = 12;
     private final QueueList<Integer> queue = new QueueList(statisticsHours);
     private Integer callsCount = 0;
@@ -11,16 +11,15 @@ public class StatisticsInfo {
     }
 
     public void update() {
-        ++callsCount;
+        callsCount++;
         if (queue.size() == 0) {
             queue.add(callsCount);
-        }
-        else {
+        } else {
             queue.set(0, callsCount);
         }
     }
 
-    public QueueList<Integer> getStatistics () {
+    public QueueList<Integer> getStatistics() {
         return queue;
     }
 }

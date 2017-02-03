@@ -1,5 +1,8 @@
 package com.company.project.filter;
 
+import com.company.project.logger.ServletLogger;
+import com.company.project.statistics.StatisticsService;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -7,50 +10,30 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import java.io.IOException;
+import java.util.logging.Level;
 
 @javax.servlet.annotation.WebFilter(filterName = "statistics filter")
-public class StatisticsFilter implements Filter
-{
-    private final StatisticsProcessor statisticsProcessor = new StatisticsProcessor();
+public final class StatisticsFilter implements Filter {
+    private final StatisticsService statisticsService = new StatisticsService();
+    private final ServletLogger logger = new ServletLogger();
 
-    private void collectStatistics(){
-        try {
-            statisticsProcessor.CollectStatistics();
-        }
-        catch (Exception e) {
-            System.out.println("Exception raised: " + e.getMessage());
-        }
-    }
-
-    private void getStatistics(ServletResponse response) {
-        StatisticsInfo info = statisticsProcessor.GetStatistics();
-        StatisticsFormatter formatter = new StatisticsFormatter();
-        formatter.formatStatistics(info, response);
-    }
-
-    private boolean needStatistics (ServletRequest request) {
-        String parameter = request.getParameter("statistics");
-        return  parameter != null && parameter.equals("1");
+    @Override
+    public void init(final FilterConfig config) throws ServletException {
     }
 
     @Override
-    public void init(FilterConfig config) throws ServletException {
-    }
-
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+    public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain chain)
             throws IOException, ServletException {
         try {
-            if (needStatistics(request)) {
-                getStatistics(response);
+            if (statisticsService.needStatistics(request)) {
+                statisticsService.getStatistics(response.getWriter());
                 return;
             }
 
             chain.doFilter(request, response);
-            collectStatistics();
-        }
-        catch (Exception e) {
-            System.out.println("Exception raised: " + e.getMessage());
+            statisticsService.collectStatistics();
+        } catch (Exception e) {
+            logger.log(Level.WARNING, e.toString(), e);
         }
     }
 

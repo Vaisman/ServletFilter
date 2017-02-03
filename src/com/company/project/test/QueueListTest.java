@@ -1,6 +1,6 @@
 package com.company.project.test;
 
-import com.company.project.filter.QueueList;
+import com.company.project.statistics.QueueList;
 
 import static org.junit.Assert.assertEquals;
 
