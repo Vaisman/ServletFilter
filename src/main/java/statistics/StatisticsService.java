@@ -1,6 +1,6 @@
-package com.company.project.statistics;
+package main.java.statistics;
 
-import com.company.project.logger.ServletLogger;
+import main.java.logger.ServletLogger;
 
 import javax.servlet.ServletRequest;
 import java.io.PrintWriter;
@@ -13,7 +13,6 @@ public final class StatisticsService {
     public void collectStatistics() {
         try {
             statisticsProcessor.collectStatistics();
-            throw new Exception("dfs");
         } catch (Exception e) {
             logger.log(Level.WARNING, e.toString(), e);
         }

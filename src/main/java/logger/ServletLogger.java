@@ -1,6 +1,6 @@
-package com.company.project.logger;
+package main.java.logger;
 
-import com.company.project.filter.StatisticsFilter;
+import main.java.filter.StatisticsFilter;
 
 import java.io.IOException;
 import java.util.logging.ConsoleHandler;

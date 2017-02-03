@@ -1,4 +1,4 @@
-package com.company.project.statistics;
+package main.java.statistics;
 
 public final class StatisticsInfo {
     private final Integer statisticsHours = 12;

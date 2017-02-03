@@ -1,4 +1,4 @@
-package com.company.project.test;
+package test.java;
 
 public class StatisticsFormatterTest {
     // TO DO

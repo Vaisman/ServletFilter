@@ -1,8 +1,8 @@
-package com.company.project.test;
+package test.java;
 
 import java.time.Duration;
 
-import com.company.project.statistics.StatisticsInterval;
+import main.java.statistics.StatisticsInterval;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,7 +1,7 @@
-package com.company.project.filter;
+package main.java.filter;
 
-import com.company.project.logger.ServletLogger;
-import com.company.project.statistics.StatisticsService;
+import main.java.logger.ServletLogger;
+import main.java.statistics.StatisticsService;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -12,7 +12,6 @@ import javax.servlet.ServletResponse;
 import java.io.IOException;
 import java.util.logging.Level;
 
-@javax.servlet.annotation.WebFilter(filterName = "statistics filter")
 public final class StatisticsFilter implements Filter {
     private final StatisticsService statisticsService = new StatisticsService();
     private final ServletLogger logger = new ServletLogger();

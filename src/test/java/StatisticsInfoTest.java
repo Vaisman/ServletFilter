@@ -1,6 +1,6 @@
-package com.company.project.test;
+package test.java;
 
-import com.company.project.statistics.StatisticsInfo;
+import main.java.statistics.StatisticsInfo;
 
 import static org.junit.Assert.assertEquals;
 

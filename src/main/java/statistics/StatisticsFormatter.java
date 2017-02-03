@@ -1,4 +1,4 @@
-package com.company.project.statistics;
+package main.java.statistics;
 
 import java.io.PrintWriter;
 

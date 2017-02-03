@@ -6,7 +6,7 @@
 
     <filter>
         <filter-name>StatsFilter</filter-name>
-        <filter-class>com.company.project.filter.StatisticsFilter</filter-class>
+        <filter-class>main.java.filter.StatisticsFilter</filter-class>
     </filter>
 
     <filter-mapping>
@@ -16,7 +16,7 @@
 
     <servlet>
         <servlet-name>OgettoServlet</servlet-name>
-        <servlet-class>com.company.project.servlets.OgettoServlet</servlet-class>
+        <servlet-class>main.java.servlets.OgettoServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
