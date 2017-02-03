@@ -10,6 +10,9 @@ public final class StatisticsService {
     private static final StatisticsProcessor PROCESSOR = new StatisticsProcessor();
     private static final ServletLogger LOGGER = new ServletLogger();
 
+    private StatisticsService() {
+    }
+
     public static synchronized void collectStatistics() {
         try {
             PROCESSOR.collectStatistics();
