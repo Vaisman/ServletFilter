@@ -7,24 +7,24 @@ import java.io.PrintWriter;
 import java.util.logging.Level;
 
 public final class StatisticsService {
-    private final StatisticsProcessor statisticsProcessor = new StatisticsProcessor();
-    private final ServletLogger logger = new ServletLogger();
+    private static final StatisticsProcessor PROCESSOR = new StatisticsProcessor();
+    private static final ServletLogger LOGGER = new ServletLogger();
 
-    public void collectStatistics() {
+    public static synchronized void collectStatistics() {
         try {
-            statisticsProcessor.collectStatistics();
+            PROCESSOR.collectStatistics();
         } catch (Exception e) {
-            logger.log(Level.WARNING, e.toString(), e);
+            LOGGER.log(Level.WARNING, e.toString(), e);
         }
     }
 
-    public void getStatistics(final PrintWriter writer) {
-        StatisticsInfo info = statisticsProcessor.getStatistics();
+    public static synchronized void getStatistics(final PrintWriter writer) {
+        StatisticsInfo info = PROCESSOR.getStatistics();
         StatisticsFormatter formatter = new StatisticsFormatter();
         formatter.formatStatistics(info, writer);
     }
 
-    public boolean needStatistics(final ServletRequest request) {
+    public static synchronized boolean needStatistics(final ServletRequest request) {
         String parameter = request.getParameter("statistics");
         return  parameter != null && parameter.equals("1");
     }

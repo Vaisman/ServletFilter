@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 
 public final class StatisticsFilter implements Filter {
-    private final StatisticsService statisticsService = new StatisticsService();
     private final ServletLogger logger = new ServletLogger();
 
     @Override
@@ -24,13 +23,8 @@ public final class StatisticsFilter implements Filter {
     public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain chain)
             throws IOException, ServletException {
         try {
-            if (statisticsService.needStatistics(request)) {
-                statisticsService.getStatistics(response.getWriter());
-                return;
-            }
-
             chain.doFilter(request, response);
-            statisticsService.collectStatistics();
+            StatisticsService.collectStatistics();
         } catch (Exception e) {
             logger.log(Level.WARNING, e.toString(), e);
         }
